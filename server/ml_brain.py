@@ -3,8 +3,7 @@ import os
 
 
 class Ml_brain:
-    def __init__(self, image_path):
-        self.image = image_path
+    def __init__(self):
         self.execution_path = os.getcwd()
         self.prediction = ImagePrediction()
         self.prediction.setModelTypeAsSqueezeNet()  # Model
@@ -16,9 +15,9 @@ class Ml_brain:
         self.prediction.loadModel()
 
     # returns 5 possibilities
-    def predict(self):
+    def predict(self, image):
         predictions, probabilities = self.prediction.predictImage(
-            os.path.join(self.execution_path, self.image), result_count=5
+            os.path.join(self.execution_path, image), result_count=5
         )
         return predictions, probabilities
 
@@ -26,10 +25,6 @@ class Ml_brain:
         for eachPrediction, eachProbability in zip(predictions, probabilities):
             print(eachPrediction, " : ", eachProbability)
 
-    def run(self):
-        predictions, probabilities = self.predict()
+    def run(self, image):
+        predictions, probabilities = self.predict(image)
         self.results(predictions, probabilities)
-
-
-brain = Ml_brain("./img/giraffe.jpg")
-brain.run()
