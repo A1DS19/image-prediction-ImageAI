@@ -1,1 +1,1 @@
-# Simple image prediction with [ImageAI](https://github.com/OlafenwaMoses/ImageAI)
+## Simple image prediction with [ImageAI](https://github.com/OlafenwaMoses/ImageAI)
