@@ -1,21 +1,18 @@
-from flask import Flask, request
-from flask_cors import CORS
-import os
+from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from ml_brain import Ml_brain
 from PIL import Image
-import io
-import base64
 
 app = Flask(__name__)
 brain = Ml_brain()
-CORS(app)
-
-# Arreglar filepath para modelo
+cors = CORS(app)
 
 
 @app.route("/eval-img", methods=["POST"])
+@cross_origin()
 def evaluate_image():
-    buff = io.BytesIO()
-    file = request.files.get("file").read()
-    print(brain.run(file))
-    return "done"
+    img = request.files.get("file")
+    pil_img = Image.open(img)
+    pil_img.save("img.jpg")
+    result = brain.run("img.jpg")
+    return jsonify(result)

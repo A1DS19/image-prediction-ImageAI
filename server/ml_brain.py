@@ -22,9 +22,9 @@ class Ml_brain:
         return predictions, probabilities
 
     def results(self, predictions, probabilities):
-        result = {}
+        result = []
         for eachPrediction, eachProbability in zip(predictions, probabilities):
-            result = {eachPrediction: eachProbability}
+            result.append({eachPrediction: eachProbability})
             # print(eachPrediction, " : ", eachProbability)
         return result
 
