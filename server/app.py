@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-from ml_brain import Ml_brain
 from PIL import Image
+from ml_brain import Ml_brain
+
 
 app = Flask(__name__)
 brain = Ml_brain()
@@ -16,3 +17,7 @@ def evaluate_image():
     pil_img.save("img.jpg")
     result = brain.run("img.jpg")
     return jsonify(result)
+
+
+if __name__ == "__main__":
+    app.run(threaded=True, port=5000)
