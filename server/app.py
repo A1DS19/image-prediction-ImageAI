@@ -16,3 +16,7 @@ def evaluate_image():
     pil_img.save("img.jpg")
     result = brain.run("img.jpg")
     return jsonify(result)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
