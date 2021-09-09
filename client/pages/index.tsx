@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Container } from '../components/Container';
 import Image from 'next/image';
@@ -21,8 +21,11 @@ const Home: NextPage = () => {
     const file = acceptedFiles[0];
     const acceptedFile = { file, preview: URL.createObjectURL(file) };
     setSelectedImage(acceptedFile);
-    uploadImage(acceptedFile);
   }, []);
+
+  useEffect(() => {
+    uploadImage(selectedImage!);
+  }, [selectedImage]);
 
   const uploadImage = async (img: acceptedFile): Promise<void> => {
     try {
@@ -83,7 +86,9 @@ const Home: NextPage = () => {
         </div>
 
         <div className=' ml-5 flex-1'>
-          {!loading && selectedImage && <Graph prediction={prediction!} />}
+          {!loading && selectedImage && (
+            <Graph loading={loading} prediction={prediction!} />
+          )}
         </div>
       </div>
     </Container>
