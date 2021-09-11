@@ -6,7 +6,7 @@ from ml_brain import Ml_brain
 
 app = Flask(__name__)
 brain = Ml_brain()
-cors = CORS(app)
+CORS(app)
 
 
 @app.route("/eval-img", methods=["POST"])
@@ -17,6 +17,12 @@ def evaluate_image():
     pil_img.save("img.jpg")
     result = brain.run("img.jpg")
     return jsonify(result)
+
+
+@app.route("/test", methods=["GET"])
+@cross_origin()
+def test_app():
+    return "HELLO WORLD"
 
 
 if __name__ == "__main__":
