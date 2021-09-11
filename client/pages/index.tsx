@@ -16,9 +16,10 @@ const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<Array<{}> | []>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const url = process.env.NODE_ENV
-    ? 'http://127.0.0.1:5000/eval-img'
-    : 'https://image-prediction-image-ai-bpll3.ondigitalocean.app/eval-img';
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? 'http://127.0.0.1:5000/eval-img'
+      : 'https://image-prediction-image-ai-bpll3.ondigitalocean.app/eval-img';
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
