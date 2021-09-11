@@ -1,1 +1,1 @@
-Image prediction app.
+## Image prediction app.
