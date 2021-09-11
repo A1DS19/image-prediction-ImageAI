@@ -31,6 +31,8 @@ const Home: NextPage = () => {
     uploadImage(selectedImage!);
   }, [selectedImage]);
 
+  console.log(123);
+
   const uploadImage = async (img: acceptedFile): Promise<void> => {
     try {
       setLoading(true);
