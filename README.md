@@ -4,4 +4,4 @@ Visit:
 
 - https://imageai.vercel.app/
 
-<p>Status: <strong style="color:green"> Up </strong></p>
+<p>Status: <strong style="color:green"> Down </strong></p>
