@@ -22,7 +22,7 @@ def evaluate_image():
 @app.route("/test", methods=["GET"])
 @cross_origin()
 def test_app():
-    return "HELLO WORLD"
+    return "HELLO WORLD!"
 
 
 if __name__ == "__main__":
